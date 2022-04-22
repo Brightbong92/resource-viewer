@@ -11,7 +11,7 @@ export type resourceType = {
 const tempData = [
   {
     id: 1,
-    imgUrl: 'http://www.youtube.com/embed/xDMP3i36naA',
+    imgUrl: 'https://www.youtube.com/embed/xDMP3i36naA',
   },
   {
     id: 2,

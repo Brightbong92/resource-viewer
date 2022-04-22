@@ -38,7 +38,7 @@ const Sidebar = (): React.ReactElement => {
     (id: number) => () => {
       const idx = list.findIndex((v) => v.id === id);
       if (idx !== -1) {
-        if (list[idx].imgUrl.startsWith('http')) {
+        if (list[idx].imgUrl.startsWith('https')) {
           dispatch(setViewUrl(list[idx].imgUrl));
         } else {
           dispatch(setViewUrl(''));
