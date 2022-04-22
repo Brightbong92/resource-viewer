@@ -17,14 +17,20 @@ const Sidebar = (): React.ReactElement => {
   const { list, viewUrl } = useAppSelector(selectResource);
 
   const onClickaddUrl = useCallback(() => {
-    dispatch(addList({ id: Date.now(), imgUrl: '' }));
+    const msg = 'URL을 입력해주세요 :D';
+    const result = window.prompt(msg);
+    if (result) {
+      if (result.startsWith('http') || result.startsWith('https')) {
+        dispatch(addList({ id: Date.now(), originImgUrl: result, inputUrl: result }));
+      } else alert(msg);
+    }
   }, [dispatch]);
 
   const onClickDelete = useCallback(
     (idx: number) => {
       const index = list.findIndex((v) => v.id === idx);
       if (index !== -1) {
-        if (list[index].imgUrl === viewUrl) {
+        if (list[index].originImgUrl === viewUrl) {
           dispatch(setViewUrl(''));
           dispatch(setViewUrlVisible(false));
         }
@@ -38,8 +44,8 @@ const Sidebar = (): React.ReactElement => {
     (id: number) => () => {
       const idx = list.findIndex((v) => v.id === id);
       if (idx !== -1) {
-        if (list[idx].imgUrl.startsWith('https')) {
-          dispatch(setViewUrl(list[idx].imgUrl));
+        if (list[idx].originImgUrl.startsWith('https')) {
+          dispatch(setViewUrl(list[idx].originImgUrl));
         } else {
           dispatch(setViewUrl(''));
           dispatch(setViewUrlVisible(false));

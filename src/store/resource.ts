@@ -11,18 +11,21 @@ export type resourceType = {
 const tempData = [
   {
     id: 1,
-    imgUrl: 'https://www.youtube.com/embed/xDMP3i36naA',
+    originImgUrl: 'https://www.youtube.com/embed/xDMP3i36naA',
+    inputUrl: 'https://www.youtube.com/embed/xDMP3i36naA',
   },
   {
     id: 2,
-    imgUrl:
+    originImgUrl:
+      'https://image.ohou.se/i/bucketplace-v2-development/uploads%2Fadvices%2Fphotos%2F1448849450628_UzKYBJR.jpg?gif=1&w=720',
+    inputUrl:
       'https://image.ohou.se/i/bucketplace-v2-development/uploads%2Fadvices%2Fphotos%2F1448849450628_UzKYBJR.jpg?gif=1&w=720',
   },
 ];
 
 const initialState: resourceType = {
   list: tempData,
-  viewUrl: tempData[0].imgUrl,
+  viewUrl: tempData[0].originImgUrl,
   viewUrlVisible: true,
 };
 
@@ -39,7 +42,7 @@ export const resourceSlice = createSlice({
     setList: (state, action) => {
       const { id, value } = action.payload;
       const idx = state.list.findIndex((v) => v.id === id);
-      if (idx !== -1) state.list[idx].imgUrl = value;
+      if (idx !== -1) state.list[idx].inputUrl = value;
     },
     setViewUrl: (state, action) => {
       state.viewUrl = action.payload;

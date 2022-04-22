@@ -14,11 +14,10 @@ const Card = ({ id, onClickCard, onClickDelete }: IProps): React.ReactElement =>
   const dispatch = useAppDispatch();
   const { list } = useAppSelector(selectResource);
   const [editable, setEditTable] = useState(true);
+
   const inputValue = useMemo(() => {
     const idx = list.findIndex((v) => v.id === id);
-    if (idx !== -1) {
-      return list[idx].imgUrl;
-    }
+    if (idx !== -1) return list[idx].inputUrl;
   }, [id, list]);
 
   const onClickEdit = useCallback((e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
