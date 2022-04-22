@@ -8,10 +8,22 @@ export type resourceType = {
   viewUrlVisible: boolean;
 };
 
+const tempData = [
+  {
+    id: 1,
+    imgUrl: 'http://www.youtube.com/embed/xDMP3i36naA',
+  },
+  {
+    id: 2,
+    imgUrl:
+      'https://image.ohou.se/i/bucketplace-v2-development/uploads%2Fadvices%2Fphotos%2F1448849450628_UzKYBJR.jpg?gif=1&w=720',
+  },
+];
+
 const initialState: resourceType = {
-  list: [],
-  viewUrl: '',
-  viewUrlVisible: false,
+  list: tempData,
+  viewUrl: tempData[0].imgUrl,
+  viewUrlVisible: true,
 };
 
 export const resourceSlice = createSlice({

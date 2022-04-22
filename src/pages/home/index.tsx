@@ -1,43 +1,46 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useCallback } from 'react';
 import Iframe from 'react-iframe';
+import { TypedIcon } from 'typed-design-system';
+
+import { useAppSelector, useAppDispatch } from '@Store/hooks';
+import { selectResource, setViewUrl, setViewUrlVisible } from '@Store/resource';
+
 import Sidebar from '@components/Sidebar/Sidebar';
-import { useAppSelector } from '@Store/hooks';
-import { selectResource } from '@Store/resource';
-
-export const Main = styled.main`
-  display: flex;
-`;
-
-export const Section = styled.section`
-  flex-grow: 1;
-  height: 100vh;
-`;
+import { S } from './home.styles';
 
 const HomePage = () => {
+  const dispatch = useAppDispatch();
   const { viewUrl } = useAppSelector(selectResource);
+
+  const onClickClose = useCallback(() => {
+    dispatch(setViewUrl(''));
+    dispatch(setViewUrlVisible(false));
+  }, [dispatch]);
   return (
     <>
-      <Main>
+      <S.Main>
         <Sidebar />
-        <Section>
-          <div>
-            https://image.ohou.se/i/bucketplace-v2-development/uploads%2Fadvices%2Fphotos%2F1448849450628_UzKYBJR.jpg?gif=1&w=720
-            <span>X</span>
-          </div>
+        <S.Section>
+          {viewUrl && (
+            <S.UrlHeader>
+              {viewUrl}
+              <S.CloseIconWrap onClick={onClickClose}>
+                <TypedIcon icon="close_small" />
+              </S.CloseIconWrap>
+            </S.UrlHeader>
+          )}
+
           <Iframe
-            // url="http://www.youtube.com/embed/xDMP3i36naA"
-            url="https://image.ohou.se/i/bucketplace-v2-development/uploads%2Fadvices%2Fphotos%2F1448849450628_UzKYBJR.jpg?gif=1&w=720"
-            // url={viewUrl}
+            url={viewUrl}
             position="relative"
             width="100%"
+            height="100%"
             id="myId"
             className="myClassname"
-            height="100%"
             styles={{ height: '25px' }}
           />
-        </Section>
-      </Main>
+        </S.Section>
+      </S.Main>
     </>
   );
 };

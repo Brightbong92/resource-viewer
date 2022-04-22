@@ -1,5 +1,11 @@
-import React, { useCallback, useEffect } from 'react';
-import { addList, deleteList, selectResource, setViewUrl } from '@Store/resource';
+import React, { useCallback } from 'react';
+import {
+  addList,
+  deleteList,
+  selectResource,
+  setViewUrl,
+  setViewUrlVisible,
+} from '@Store/resource';
 import { useAppDispatch, useAppSelector } from '@Store/hooks';
 import { IResource } from '@Store/interface.d';
 
@@ -8,7 +14,7 @@ import { S } from './Sidebar.styles';
 
 const Sidebar = (): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const { list, viewUrlVisible } = useAppSelector(selectResource);
+  const { list, viewUrl } = useAppSelector(selectResource);
 
   const onClickaddUrl = useCallback(() => {
     dispatch(addList({ id: Date.now(), imgUrl: '' }));
@@ -16,24 +22,32 @@ const Sidebar = (): React.ReactElement => {
 
   const onClickDelete = useCallback(
     (idx: number) => {
+      const index = list.findIndex((v) => v.id === idx);
+      if (index !== -1) {
+        if (list[index].imgUrl === viewUrl) {
+          dispatch(setViewUrl(''));
+          dispatch(setViewUrlVisible(false));
+        }
+      }
       dispatch(deleteList(idx));
     },
-    [dispatch],
+    [dispatch, list, viewUrl],
   );
 
   const onClickCard = useCallback(
     (id: number) => () => {
       const idx = list.findIndex((v) => v.id === id);
-      if (!viewUrlVisible) {
-        if (idx !== -1) dispatch(setViewUrl(list[idx].imgUrl));
+      if (idx !== -1) {
+        if (list[idx].imgUrl.startsWith('http')) {
+          dispatch(setViewUrl(list[idx].imgUrl));
+        } else {
+          dispatch(setViewUrl(''));
+          dispatch(setViewUrlVisible(false));
+        }
       }
     },
-    [dispatch, list, viewUrlVisible],
+    [dispatch, list],
   );
-
-  useEffect(() => {
-    console.log('store list', list);
-  }, [list]);
 
   return (
     <div>
