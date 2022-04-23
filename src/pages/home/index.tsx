@@ -11,10 +11,8 @@ import { S } from './home.styles';
 const HomePage = () => {
   const dispatch = useAppDispatch();
   const { viewUrl, headerViewUrl } = useAppSelector(selectResource);
+  const onClickClose = useCallback(() => dispatch(setViewUrl('')), [dispatch]);
 
-  const onClickClose = useCallback(() => {
-    dispatch(setViewUrl(''));
-  }, [dispatch]);
   return (
     <>
       <S.Main>
