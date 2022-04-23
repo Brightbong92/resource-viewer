@@ -5,7 +5,7 @@ import { IResource } from './interface';
 export type resourceType = {
   list: IResource[];
   viewUrl: string;
-  viewUrlVisible: boolean;
+  headerViewUrl: string;
 };
 
 const tempData = [
@@ -21,12 +21,22 @@ const tempData = [
     inputUrl:
       'https://image.ohou.se/i/bucketplace-v2-development/uploads%2Fadvices%2Fphotos%2F1448849450628_UzKYBJR.jpg?gif=1&w=720',
   },
+  {
+    id: 3,
+    originImgUrl: 'https://www.robinwieruch.de/react-libraries/',
+    inputUrl: 'https://www.robinwieruch.de/react-libraries/',
+  },
+  {
+    id: 4,
+    originImgUrl: 'https://www.youtube.com/embed/0OSUw7hJfVs ',
+    inputUrl: 'https://www.youtube.com/embed/0OSUw7hJfVs ',
+  },
 ];
 
 const initialState: resourceType = {
   list: tempData,
-  viewUrl: tempData[0].originImgUrl,
-  viewUrlVisible: true,
+  viewUrl: tempData[3].originImgUrl,
+  headerViewUrl: tempData[3].inputUrl,
 };
 
 export const resourceSlice = createSlice({
@@ -47,14 +57,13 @@ export const resourceSlice = createSlice({
     setViewUrl: (state, action) => {
       state.viewUrl = action.payload;
     },
-    setViewUrlVisible: (state, action) => {
-      state.viewUrlVisible = action.payload;
+    setHeaderViewUrl: (state, action) => {
+      state.headerViewUrl = action.payload;
     },
   },
 });
 
-export const { addList, deleteList, setList, setViewUrl, setViewUrlVisible } =
-  resourceSlice.actions;
+export const { addList, deleteList, setList, setViewUrl, setHeaderViewUrl } = resourceSlice.actions;
 
 export const selectResource = (state: RootState) => state.resource;
 

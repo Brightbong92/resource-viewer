@@ -3,18 +3,17 @@ import Iframe from 'react-iframe';
 import { TypedIcon } from 'typed-design-system';
 
 import { useAppSelector, useAppDispatch } from '@Store/hooks';
-import { selectResource, setViewUrl, setViewUrlVisible } from '@Store/resource';
+import { selectResource, setViewUrl } from '@Store/resource';
 
 import Sidebar from '@components/Sidebar/Sidebar';
 import { S } from './home.styles';
 
 const HomePage = () => {
   const dispatch = useAppDispatch();
-  const { viewUrl } = useAppSelector(selectResource);
+  const { viewUrl, headerViewUrl } = useAppSelector(selectResource);
 
   const onClickClose = useCallback(() => {
     dispatch(setViewUrl(''));
-    dispatch(setViewUrlVisible(false));
   }, [dispatch]);
   return (
     <>
@@ -23,7 +22,7 @@ const HomePage = () => {
         <S.Section>
           {viewUrl && (
             <S.UrlHeader>
-              {viewUrl}
+              {headerViewUrl}
               <S.CloseIconWrap onClick={onClickClose}>
                 <TypedIcon icon="close_small" />
               </S.CloseIconWrap>
@@ -37,7 +36,6 @@ const HomePage = () => {
             height="100%"
             id="myId"
             className="myClassname"
-            styles={{ height: '25px' }}
           />
         </S.Section>
       </S.Main>

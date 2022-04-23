@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export namespace S {
-  export const CardWrap = styled.div`
+  export const CardWrap = styled.ul`
     width: 260px;
     height: 90px;
     background: #ffffff;
