@@ -69,7 +69,6 @@ const Sidebar = (): React.ReactElement => {
         let originImgUrl: string | ArrayBuffer | null | undefined;
         var reader = new FileReader();
         reader.readAsDataURL(f);
-
         await new Promise((resolve) => {
           reader.onloadend = (event) => {
             originImgUrl = event.target?.result;
@@ -104,7 +103,7 @@ const Sidebar = (): React.ReactElement => {
           <S.CustomInputFile
             type="file"
             id="input-file"
-            accept="jpg,png"
+            accept="image/jpg, image/jpeg, image/png"
             multiple
             onChange={onChangeImgUpload}
           />
