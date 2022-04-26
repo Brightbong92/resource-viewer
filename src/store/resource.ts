@@ -26,11 +26,6 @@ const tempData = [
     originImgUrl: 'https://www.robinwieruch.de/react-libraries/',
     inputUrl: 'https://www.robinwieruch.de/react-libraries/',
   },
-  {
-    id: 4,
-    originImgUrl: 'https://www.youtube.com/embed/0OSUw7hJfVs ',
-    inputUrl: 'https://www.youtube.com/embed/0OSUw7hJfVs ',
-  },
 ];
 
 const initialState: resourceType = {
