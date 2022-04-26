@@ -15,6 +15,10 @@ export namespace S {
     padding-top: 35px;
     display: inline;
     text-align: right;
+
+    & span:last-child {
+      padding-left: 10px;
+    }
   `;
 
   export const IconButton = styled.span`
@@ -25,5 +29,6 @@ export namespace S {
     width: 250px;
     height: 30px;
     border: none;
+    background-color: #fff;
   `;
 }

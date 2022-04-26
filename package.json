@@ -1,12 +1,9 @@
 {
-  "name": "simple-resource-list",
+  "name": "resource-viewer",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.4.3",
-    "@emotion/core": "^10.0.0",
-    "@emotion/react": "^11.9.0",
-    "@emotion/styled": "^11.8.1",
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
@@ -21,7 +18,6 @@
     "react-redux": "^8.0.1",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.5",
-    "typed-design-system": "0.0.51",
     "typescript": "^4.6.3",
     "web-vitals": "^2.1.4"
   },

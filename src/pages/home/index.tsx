@@ -1,12 +1,13 @@
 import React, { useCallback } from 'react';
 import Iframe from 'react-iframe';
-import { TypedIcon } from 'typed-design-system';
 
 import { useAppSelector, useAppDispatch } from '@Store/hooks';
 import { selectResource, setViewUrl } from '@Store/resource';
 
 import Sidebar from '@components/Sidebar/Sidebar';
 import { S } from './home.styles';
+
+const CloseIcon = '/svgs/close.svg';
 
 const HomePage = () => {
   const dispatch = useAppDispatch();
@@ -22,7 +23,8 @@ const HomePage = () => {
             <S.UrlHeader>
               {headerViewUrl}
               <S.CloseIconWrap onClick={onClickClose}>
-                <TypedIcon icon="close_small" />
+                <img src={CloseIcon} alt="close" />
+                {/* <TypedIcon icon="close_small" /> */}
               </S.CloseIconWrap>
             </S.UrlHeader>
           )}

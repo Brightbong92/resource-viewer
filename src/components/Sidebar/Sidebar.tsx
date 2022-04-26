@@ -11,11 +11,11 @@ const Sidebar = (): React.ReactElement => {
   const { list, viewUrl } = useAppSelector(selectResource);
 
   const orderedList = useMemo(() => {
-    const temp = [...list];
-    return temp?.sort((a, b) => {
-      const aDate = new Date(a.id);
-      const bDate = new Date(b.id);
-      return bDate.getTime() - aDate.getTime();
+    const tempList = [...list];
+    return tempList?.sort((a, b) => {
+      const compare1 = new Date(a.id);
+      const compare2 = new Date(b.id);
+      return compare2.getTime() - compare1.getTime();
     });
   }, [list]);
 

@@ -1,8 +1,10 @@
 import React, { memo, useCallback, useMemo, useState } from 'react';
-import { TypedIcon } from 'typed-design-system';
 import { useAppDispatch, useAppSelector } from '@Store/hooks';
 import { setList, selectResource } from '@Store/resource';
 import { S } from './Card.styles';
+
+const EditIcon = '/svgs/edit.svg';
+const DeleteIcon = '/svgs/trash.svg';
 
 interface IProps {
   id: number;
@@ -53,11 +55,11 @@ const Card = ({ id, onClickCard, onClickDelete }: IProps): React.ReactElement =>
 
       <S.IconWrap>
         <S.IconButton onClick={onClickEdit}>
-          <TypedIcon icon="edit_small" />
+          <img src={EditIcon} alt="edit" width={15} height={15} />
         </S.IconButton>
 
         <S.IconButton onClick={onClickTrash}>
-          <TypedIcon icon="trash_small" />
+          <img src={DeleteIcon} alt="delete" width={15} height={15} />
         </S.IconButton>
       </S.IconWrap>
     </S.CardWrap>
