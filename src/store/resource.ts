@@ -30,8 +30,8 @@ const tempData = [
 
 const initialState: resourceType = {
   list: tempData,
-  viewUrl: tempData[3].originImgUrl,
-  headerViewUrl: tempData[3].inputUrl,
+  viewUrl: tempData[2].originImgUrl,
+  headerViewUrl: tempData[2].inputUrl,
 };
 
 export const resourceSlice = createSlice({
